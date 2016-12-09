@@ -17,7 +17,8 @@ public class TestMain {
 //        System.out.println(System.getProperty("java.library.path"));
         MdApi mdApi = new MdApi();
         MdSpiAdapter mdSpiA = new MdSpiAdapter();
-        mdApi.connect("e:/test", true, true, mdSpiA, "tcp://180.168.146.187:10031");
+        mdApi.connect("e:/test", true, true, mdSpiA, "tcp://180.168.146.187:10010");
+//        mdApi.login("", "", "");
 //        mdApi.registerMdSpi(mdSpiA);
 //        mdApi.registerFront("tcp://180.168.146.187:10010");//tcp://180.168.146.187:10031
     }

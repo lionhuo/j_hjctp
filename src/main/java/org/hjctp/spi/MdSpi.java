@@ -1,5 +1,7 @@
 package org.hjctp.spi;
 
+import org.hjctp.entity.CThostFtdcDepthMarketDataField;
+
 /**
  * Copyright (c) 2012 Conversant Solutions. All rights reserved.
  * <p/>
@@ -9,4 +11,6 @@ public interface MdSpi {
     void OnFrontConnected();
 
     void OnFrontDisconnected(int nReason);
+
+    void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField pDepthMarketData);
 }

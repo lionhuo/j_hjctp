@@ -12,4 +12,6 @@ public class NativeLoader {
 //    public static native long registerSpi(MdSpi mdSpi);
 //    public static native long registerFront(String mdSpi);
     public static native void connect(String pszFlowPath, boolean bIsUsingUdp, boolean bIsMulticast, MdSpi mdSpi, String frontAddress);
+
+    public static native void login(String brokerId, String invesotrId, String password);
 }

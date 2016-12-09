@@ -15,6 +15,14 @@ extern "C" {
 JNIEXPORT void JNICALL Java_org_hjctp_jni_NativeLoader_connect
   (JNIEnv *, jclass, jstring, jboolean, jboolean, jobject, jstring);
 
+/*
+ * Class:     org_hjctp_jni_NativeLoader
+ * Method:    login
+ * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_org_hjctp_jni_NativeLoader_login
+  (JNIEnv *, jclass, jstring, jstring, jstring);
+
 #ifdef __cplusplus
 }
 #endif

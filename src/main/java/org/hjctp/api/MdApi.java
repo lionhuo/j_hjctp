@@ -19,6 +19,10 @@ public class MdApi {
         NativeLoader.connect(pszFlowPath, bIsUsingUdp, bIsMulticast, mdSpi, frontAddress);
     }
 
+    public void login(String brokerId, String invesotrId, String password){
+        NativeLoader.login(brokerId, invesotrId, password);
+    }
+
 //    public void registerMdSpi(MdSpi mdSpi){
 //        NativeLoader.registerSpi(mdSpi);
 //    }
