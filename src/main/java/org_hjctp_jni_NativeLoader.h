@@ -9,19 +9,51 @@ extern "C" {
 #endif
 /*
  * Class:     org_hjctp_jni_NativeLoader
- * Method:    connect
- * Signature: (Ljava/lang/String;ZZLorg/hjctp/spi/MdSpi;Ljava/lang/String;)V
+ * Method:    createMdApi
+ * Signature: (Ljava/lang/String;ZZ)V
  */
-JNIEXPORT void JNICALL Java_org_hjctp_jni_NativeLoader_connect
-  (JNIEnv *, jclass, jstring, jboolean, jboolean, jobject, jstring);
+JNIEXPORT void JNICALL Java_org_hjctp_jni_NativeLoader_createMdApi
+  (JNIEnv *, jclass, jstring, jboolean, jboolean);
 
 /*
  * Class:     org_hjctp_jni_NativeLoader
- * Method:    login
+ * Method:    registerSpi
+ * Signature: (Lorg/hjctp/spi/MdSpi;)V
+ */
+JNIEXPORT void JNICALL Java_org_hjctp_jni_NativeLoader_registerSpi
+  (JNIEnv *, jclass, jobject);
+
+/*
+ * Class:     org_hjctp_jni_NativeLoader
+ * Method:    registerFront
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_org_hjctp_jni_NativeLoader_registerFront
+  (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     org_hjctp_jni_NativeLoader
+ * Method:    registerLoginInfo
  * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
  */
-JNIEXPORT void JNICALL Java_org_hjctp_jni_NativeLoader_login
+JNIEXPORT void JNICALL Java_org_hjctp_jni_NativeLoader_registerLoginInfo
   (JNIEnv *, jclass, jstring, jstring, jstring);
+
+/*
+ * Class:     org_hjctp_jni_NativeLoader
+ * Method:    registerSubMarketData
+ * Signature: ([Ljava/lang/String;I)V
+ */
+JNIEXPORT void JNICALL Java_org_hjctp_jni_NativeLoader_registerSubMarketData
+  (JNIEnv *, jclass, jobjectArray, jint);
+
+/*
+ * Class:     org_hjctp_jni_NativeLoader
+ * Method:    connect
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_org_hjctp_jni_NativeLoader_connect
+  (JNIEnv *, jclass);
 
 #ifdef __cplusplus
 }

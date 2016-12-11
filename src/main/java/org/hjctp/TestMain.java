@@ -3,6 +3,9 @@ package org.hjctp;
 import org.hjctp.api.MdApi;
 import org.hjctp.spi.MdSpiAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Copyright (c) 2012 Conversant Solutions. All rights reserved.
  * <p/>
@@ -14,12 +17,13 @@ public class TestMain {
     }
 
     public static void main(String[] args) {
-//        System.out.println(System.getProperty("java.library.path"));
-        MdApi mdApi = new MdApi();
+        String[] contracts = new String[]{"m1701","TA701","rb1701"};
+        MdApi mdApi = new MdApi("d:/tmp", true, true);
         MdSpiAdapter mdSpiA = new MdSpiAdapter();
-        mdApi.connect("e:/test", true, true, mdSpiA, "tcp://180.168.146.187:10010");
-//        mdApi.login("", "", "");
-//        mdApi.registerMdSpi(mdSpiA);
-//        mdApi.registerFront("tcp://180.168.146.187:10010");//tcp://180.168.146.187:10031
+        mdApi.registerMdSpi(mdSpiA);
+        mdApi.registerFront("tcp://180.168.146.187:10031");
+        mdApi.registerLoginInfo("9999", "077580", "hp120416");
+        mdApi.registerSubMarketData(contracts, 2);
+        mdApi.connect();
     }
 }

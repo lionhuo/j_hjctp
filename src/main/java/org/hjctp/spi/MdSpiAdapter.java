@@ -1,6 +1,8 @@
 package org.hjctp.spi;
 
-import org.hjctp.entity.CThostFtdcDepthMarketDataField;
+import com.sun.org.apache.xpath.internal.SourceTree;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import org.hjctp.entity.*;
 
 /**
  * Copyright (c) 2012 Conversant Solutions. All rights reserved.
@@ -10,17 +12,63 @@ import org.hjctp.entity.CThostFtdcDepthMarketDataField;
 public class MdSpiAdapter implements MdSpi {
 
     @Override
-    public void OnFrontConnected() {
+    public void onFrontConnected() {
         System.out.println("front connect success");
     }
 
     @Override
-    public void OnFrontDisconnected(int nReason) {
+    public void onFrontDisconnected(int nReason) {
 
     }
 
     @Override
-    public void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField pDepthMarketData) {
+    public void onRspUserLogin(CThostFtdcRspUserLoginField pRspUserLogin, CThostFtdcRspInfoField pRspInfo,
+                               int nRequestID, boolean bIsLast) {
+        System.out.println(pRspUserLogin);
+        System.out.println(pRspInfo);
+        System.out.println(nRequestID);
+        System.out.println(bIsLast);
+    }
+
+    @Override
+    public void onRspUserLogout(CThostFtdcUserLogoutField pUserLogout, CThostFtdcRspInfoField pRspInfo, int nRequestID, boolean bIsLast) {
+
+    }
+
+    @Override
+    public void onRspError(CThostFtdcRspInfoField pRspInfo, int nRequestID, boolean bIsLast) {
+
+    }
+
+    @Override
+    public void onRspSubMarketData(CThostFtdcSpecificInstrumentField pSpecificInstrument, CThostFtdcRspInfoField pRspInfo, int nRequestID, boolean bIsLast) {
+
+    }
+
+    @Override
+    public void onRspUnSubMarketData(CThostFtdcSpecificInstrumentField pSpecificInstrument, CThostFtdcRspInfoField pRspInfo, int nRequestID, boolean bIsLast) {
+
+    }
+
+    @Override
+    public void onRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField pSpecificInstrument, CThostFtdcRspInfoField pRspInfo, int nRequestID, boolean bIsLast) {
+
+    }
+
+    @Override
+    public void onRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField pSpecificInstrument, CThostFtdcRspInfoField pRspInfo, int nRequestID, boolean bIsLast) {
+
+    }
+
+
+    @Override
+    public void onRtnDepthMarketData(CThostFtdcDepthMarketDataField pDepthMarketData) {
+        System.out.println(pDepthMarketData.getInstrumentId());
         System.out.println(pDepthMarketData.getLastPrice());
+    }
+
+    @Override
+    public void onRtnForQuoteRsp(CThostFtdcForQuoteRspField pForQuoteRsp) {
+
     }
 }

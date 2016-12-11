@@ -1,6 +1,6 @@
 package org.hjctp.spi;
 
-import org.hjctp.entity.CThostFtdcDepthMarketDataField;
+import org.hjctp.entity.*;
 
 /**
  * Copyright (c) 2012 Conversant Solutions. All rights reserved.
@@ -8,9 +8,26 @@ import org.hjctp.entity.CThostFtdcDepthMarketDataField;
  * Created on 2016/12/6.
  */
 public interface MdSpi {
-    void OnFrontConnected();
 
-    void OnFrontDisconnected(int nReason);
+    void onFrontConnected();
 
-    void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField pDepthMarketData);
+    void onFrontDisconnected(int nReason);
+
+    void onRspUserLogin(CThostFtdcRspUserLoginField pRspUserLogin, CThostFtdcRspInfoField pRspInfo, int nRequestID, boolean bIsLast);
+
+    void onRspUserLogout(CThostFtdcUserLogoutField pUserLogout, CThostFtdcRspInfoField pRspInfo, int nRequestID, boolean bIsLast);
+
+    void onRspError(CThostFtdcRspInfoField pRspInfo, int nRequestID, boolean bIsLast);
+
+    void onRspSubMarketData(CThostFtdcSpecificInstrumentField pSpecificInstrument, CThostFtdcRspInfoField pRspInfo, int nRequestID, boolean bIsLast);
+
+    void onRspUnSubMarketData(CThostFtdcSpecificInstrumentField pSpecificInstrument, CThostFtdcRspInfoField pRspInfo, int nRequestID, boolean bIsLast);
+
+    void onRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField pSpecificInstrument, CThostFtdcRspInfoField pRspInfo, int nRequestID, boolean bIsLast);
+
+    void onRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField pSpecificInstrument, CThostFtdcRspInfoField pRspInfo, int nRequestID, boolean bIsLast);
+
+    void onRtnDepthMarketData(CThostFtdcDepthMarketDataField pDepthMarketData);
+
+    void onRtnForQuoteRsp(CThostFtdcForQuoteRspField pForQuoteRsp);
 }

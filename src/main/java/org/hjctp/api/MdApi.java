@@ -3,6 +3,8 @@ package org.hjctp.api;
 import org.hjctp.jni.NativeLoader;
 import org.hjctp.spi.MdSpi;
 
+import java.util.List;
+
 /**
  * Copyright (c) 2012 Conversant Solutions. All rights reserved.
  * <p/>
@@ -10,24 +12,27 @@ import org.hjctp.spi.MdSpi;
  */
 public class MdApi {
 
-//    public MdApi(String pszFlowPath, boolean bIsUsingUdp, boolean bIsMulticast){
-//        long rep = NativeLoader.createMdApi(pszFlowPath, bIsUsingUdp, bIsMulticast);
-//        System.out.println(rep);
-//    };
+    public MdApi(String pszFlowPath, boolean bIsUsingUdp, boolean bIsMulticast){
+        NativeLoader.createMdApi(pszFlowPath, bIsUsingUdp, bIsMulticast);
+    };
 
-    public void connect(String pszFlowPath, boolean bIsUsingUdp, boolean bIsMulticast, MdSpi mdSpi, String frontAddress){
-        NativeLoader.connect(pszFlowPath, bIsUsingUdp, bIsMulticast, mdSpi, frontAddress);
+    public void registerMdSpi(MdSpi mdSpi){
+        NativeLoader.registerSpi(mdSpi);
     }
 
-    public void login(String brokerId, String invesotrId, String password){
-        NativeLoader.login(brokerId, invesotrId, password);
+    public void registerFront(String frontAddress){
+        NativeLoader.registerFront(frontAddress);
     }
 
-//    public void registerMdSpi(MdSpi mdSpi){
-//        NativeLoader.registerSpi(mdSpi);
-//    }
-//
-//    public void registerFront(String frontAddress){
-//        NativeLoader.registerFront(frontAddress);
-//    }
+    public void registerLoginInfo(String brokerId, String investorId, String password){
+        NativeLoader.registerLoginInfo(brokerId, investorId, password);
+    }
+
+    public void registerSubMarketData(String[] contracts, int iInstrumentID){
+        NativeLoader.registerSubMarketData(contracts, iInstrumentID);
+    }
+
+    public void connect(){
+        NativeLoader.connect();
+    }
 }
