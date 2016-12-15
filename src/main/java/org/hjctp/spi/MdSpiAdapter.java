@@ -63,8 +63,10 @@ public class MdSpiAdapter implements MdSpi {
 
     @Override
     public void onRtnDepthMarketData(CThostFtdcDepthMarketDataField pDepthMarketData) {
-        System.out.println(pDepthMarketData.getInstrumentId());
+//        System.out.println(pDepthMarketData.getInstrumentId());
         System.out.println(pDepthMarketData.getLastPrice());
+//        System.out.println(pDepthMarketData.getClosePrice());
+//        System.out.println(pDepthMarketData);
     }
 
     @Override

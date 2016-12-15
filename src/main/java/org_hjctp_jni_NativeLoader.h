@@ -55,6 +55,14 @@ JNIEXPORT void JNICALL Java_org_hjctp_jni_NativeLoader_registerSubMarketData
 JNIEXPORT void JNICALL Java_org_hjctp_jni_NativeLoader_connect
   (JNIEnv *, jclass);
 
+/*
+ * Class:     org_hjctp_jni_NativeLoader
+ * Method:    stop
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_org_hjctp_jni_NativeLoader_stop
+  (JNIEnv *, jclass);
+
 #ifdef __cplusplus
 }
 #endif

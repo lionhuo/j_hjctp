@@ -35,4 +35,8 @@ public class MdApi {
     public void connect(){
         NativeLoader.connect();
     }
+
+    public void stop() {
+        NativeLoader.stop();
+    }
 }
