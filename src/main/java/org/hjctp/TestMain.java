@@ -28,7 +28,7 @@ public class TestMain {
             public void run() {
                 MdSpiAdapter mdSpiA = new MdSpiAdapter();
                 mdApi.registerMdSpi(mdSpiA);
-                mdApi.registerFront(sim_firm);
+                mdApi.registerFront(sim_test);
                 mdApi.registerLoginInfo("", "", "");
                 mdApi.registerSubMarketData(contracts, 3);
                 mdApi.connect();

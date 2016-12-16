@@ -13,7 +13,7 @@ public class WriteUtil {
     private static BufferedWriter bufWriter;
     static {
         try {
-            bufWriter = new BufferedWriter(new FileWriter("E:\\test\\trade.txt"));
+            bufWriter = new BufferedWriter(new FileWriter("E:\\test\\trade.txt", true));
         } catch (IOException e) {
             e.printStackTrace();
         }
