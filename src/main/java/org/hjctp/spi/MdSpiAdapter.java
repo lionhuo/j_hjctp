@@ -3,6 +3,9 @@ package org.hjctp.spi;
 import com.sun.org.apache.xpath.internal.SourceTree;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.hjctp.entity.*;
+import org.hjctp.util.WriteUtil;
+
+import java.io.*;
 
 /**
  * Copyright (c) 2012 Conversant Solutions. All rights reserved.
@@ -10,6 +13,8 @@ import org.hjctp.entity.*;
  * Created on 2016/12/7.
  */
 public class MdSpiAdapter implements MdSpi {
+
+    BufferedWriter bufWriter = WriteUtil.buildWrite();
 
     @Override
     public void onFrontConnected() {
@@ -64,7 +69,20 @@ public class MdSpiAdapter implements MdSpi {
     @Override
     public void onRtnDepthMarketData(CThostFtdcDepthMarketDataField pDepthMarketData) {
 //        System.out.println(pDepthMarketData.getInstrumentId());
-        System.out.println(pDepthMarketData.getLastPrice());
+        try {
+            bufWriter.write(pDepthMarketData.getInstrumentId() + " " + pDepthMarketData.getLastPrice() + " " + pDepthMarketData.getUpdateTime());
+            bufWriter.flush();
+            bufWriter.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+//            try {
+//                bufWriter.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+        }
+        System.out.println(pDepthMarketData.getInstrumentId() + " " + pDepthMarketData.getLastPrice() + " " + pDepthMarketData.getUpdateTime());
 //        System.out.println(pDepthMarketData.getClosePrice());
 //        System.out.println(pDepthMarketData);
     }

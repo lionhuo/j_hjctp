@@ -20,7 +20,7 @@ public class TestMain {
         final String sim_test = "tcp://180.168.146.187:10031";
         final String sim_firm = "tcp://180.168.146.187:10011";
         final String kq_firm = "tcp://116.236.239.136:41213";
-        final String[] contracts = new String[]{"rb1705","TA705","m1705"};
+        final String[] contracts = new String[]{"rb1705","m1705","TA705"};
         final MdApi mdApi = new MdApi("e:/tmp", true, true);
 
         new Thread(){
@@ -30,7 +30,7 @@ public class TestMain {
                 mdApi.registerMdSpi(mdSpiA);
                 mdApi.registerFront(sim_firm);
                 mdApi.registerLoginInfo("", "", "");
-                mdApi.registerSubMarketData(contracts, 1);
+                mdApi.registerSubMarketData(contracts, 3);
                 mdApi.connect();
             }
         }.start();
