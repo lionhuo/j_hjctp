@@ -76,13 +76,8 @@ public class MdSpiAdapter implements MdSpi {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-//            try {
-//                bufWriter.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
         }
-        System.out.println(pDepthMarketData.getInstrumentId() + " " + pDepthMarketData.getLastPrice() + " " + pDepthMarketData.getUpdateTime());
+        System.out.println(pDepthMarketData.getInstrumentId() + " " + pDepthMarketData.getLastPrice() + " " + pDepthMarketData.getUpdateTime() + " " + pDepthMarketData.getTradingDay());
 //        System.out.println(pDepthMarketData.getClosePrice());
 //        System.out.println(pDepthMarketData);
     }

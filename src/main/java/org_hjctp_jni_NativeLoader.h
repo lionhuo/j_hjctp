@@ -57,6 +57,14 @@ JNIEXPORT void JNICALL Java_org_hjctp_jni_NativeLoader_connect
 
 /*
  * Class:     org_hjctp_jni_NativeLoader
+ * Method:    getTradingTay
+ * Signature: ()Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_org_hjctp_jni_NativeLoader_getTradingTay
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_hjctp_jni_NativeLoader
  * Method:    stop
  * Signature: ()V
  */

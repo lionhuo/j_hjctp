@@ -36,6 +36,10 @@ public class MdApi {
         NativeLoader.connect();
     }
 
+    public String getTradingDay(){
+        return NativeLoader.getTradingTay();
+    }
+
     public void stop() {
         NativeLoader.stop();
     }

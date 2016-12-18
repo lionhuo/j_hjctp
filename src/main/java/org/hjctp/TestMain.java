@@ -2,6 +2,7 @@ package org.hjctp;
 
 import org.hjctp.api.MdApi;
 import org.hjctp.spi.MdSpiAdapter;
+import org.hjctp.util.WriteUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,20 +21,17 @@ public class TestMain {
         final String sim_test = "tcp://180.168.146.187:10031";
         final String sim_firm = "tcp://180.168.146.187:10011";
         final String kq_firm = "tcp://116.236.239.136:41213";
-        final String[] contracts = new String[]{"rb1705","m1705","TA705"};
+        final String[] contracts = new String[]{"rb1705","m1705","TA705", "SR705", "MA705", "FG705", "RM705", "a1705", "c1705", "y1705"};
         final MdApi mdApi = new MdApi("e:/tmp", true, true);
 
-        new Thread(){
-            @Override
-            public void run() {
-                MdSpiAdapter mdSpiA = new MdSpiAdapter();
-                mdApi.registerMdSpi(mdSpiA);
-                mdApi.registerFront(sim_test);
-                mdApi.registerLoginInfo("", "", "");
-                mdApi.registerSubMarketData(contracts, 3);
-                mdApi.connect();
-            }
-        }.start();
+        WriteUtil.startTimer(mdApi);
+
+        MdSpiAdapter mdSpiA = new MdSpiAdapter();
+        mdApi.registerMdSpi(mdSpiA);
+        mdApi.registerFront(sim_firm);
+        mdApi.registerLoginInfo("", "", "");
+        mdApi.registerSubMarketData(contracts, 10);
+        mdApi.connect();
 
 //        new Thread(){
 //            @Override

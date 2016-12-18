@@ -16,5 +16,6 @@ public class NativeLoader {
     public static native void registerLoginInfo(String brokerId, String investorId, String password);
     public static native void registerSubMarketData(String[] contracts, int iInstrumentID);
     public static native void connect();
+    public static native String getTradingTay();
     public static native void stop();
 }
