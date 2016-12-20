@@ -14,7 +14,7 @@ import java.io.*;
  */
 public class MdSpiAdapter implements MdSpi {
 
-    BufferedWriter bufWriter = WriteUtil.buildWrite();
+    BufferedWriter bufWriter;
 
     @Override
     public void onFrontConnected() {
@@ -77,7 +77,7 @@ public class MdSpiAdapter implements MdSpi {
             e.printStackTrace();
         } finally {
         }
-        System.out.println(pDepthMarketData.getInstrumentId() + " " + pDepthMarketData.getLastPrice() + " " + pDepthMarketData.getUpdateTime() + " " + pDepthMarketData.getTradingDay());
+//        System.out.println(pDepthMarketData.getInstrumentId() + " " + pDepthMarketData.getLastPrice() + " " + pDepthMarketData.getUpdateTime() + " " + pDepthMarketData.getTradingDay());
 //        System.out.println(pDepthMarketData.getClosePrice());
 //        System.out.println(pDepthMarketData);
     }
@@ -85,5 +85,10 @@ public class MdSpiAdapter implements MdSpi {
     @Override
     public void onRtnForQuoteRsp(CThostFtdcForQuoteRspField pForQuoteRsp) {
 
+    }
+
+    @Override
+    public void onResetBufferWriter(BufferedWriter bufWriter) {
+        this.bufWriter = bufWriter;
     }
 }

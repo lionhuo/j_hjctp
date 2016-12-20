@@ -2,6 +2,8 @@ package org.hjctp.spi;
 
 import org.hjctp.entity.*;
 
+import java.io.BufferedWriter;
+
 /**
  * Copyright (c) 2012 Conversant Solutions. All rights reserved.
  * <p/>
@@ -30,4 +32,6 @@ public interface MdSpi {
     void onRtnDepthMarketData(CThostFtdcDepthMarketDataField pDepthMarketData);
 
     void onRtnForQuoteRsp(CThostFtdcForQuoteRspField pForQuoteRsp);
+
+    void onResetBufferWriter(BufferedWriter bufWriter);
 }

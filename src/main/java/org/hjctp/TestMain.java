@@ -21,16 +21,17 @@ public class TestMain {
         final String sim_test = "tcp://180.168.146.187:10031";
         final String sim_firm = "tcp://180.168.146.187:10011";
         final String kq_firm = "tcp://116.236.239.136:41213";
-        final String[] contracts = new String[]{"rb1705","m1705","TA705", "SR705", "MA705", "FG705", "RM705", "a1705", "c1705", "y1705"};
-        final MdApi mdApi = new MdApi("e:/tmp", true, true);
-
-        WriteUtil.startTimer(mdApi);
-
+        final String[] contracts = new String[]{"rb1705", "m1705", "p1705", "TA705", "SR705", "MA705", "FG705", "RM705",
+                 "a1705", "jd1705", "y1705", "pp1705"};
+        final MdApi mdApi = new MdApi("d:/tmp", true, true);
         MdSpiAdapter mdSpiA = new MdSpiAdapter();
+        WriteUtil.startTimer(mdApi);
+        WriteUtil.registerMdSpi(mdSpiA);
+
         mdApi.registerMdSpi(mdSpiA);
         mdApi.registerFront(sim_firm);
         mdApi.registerLoginInfo("", "", "");
-        mdApi.registerSubMarketData(contracts, 10);
+        mdApi.registerSubMarketData(contracts, 6);
         mdApi.connect();
 
 //        new Thread(){

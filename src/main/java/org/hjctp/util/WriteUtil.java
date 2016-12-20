@@ -1,6 +1,7 @@
 package org.hjctp.util;
 
 import org.hjctp.api.MdApi;
+import org.hjctp.spi.MdSpi;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -17,16 +18,31 @@ import java.util.TimerTask;
  */
 public class WriteUtil {
     private static BufferedWriter bufWriter;
-    static {
+    private static MdSpi mdSpi;
+//    static {
+//        try {
+//            bufWriter = new BufferedWriter(new FileWriter("d:\\market\\market-20161219.txt", true));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+//    public static BufferedWriter buildWrite(){
+//        return bufWriter;
+//    }
+
+    public static void registerMdSpi(MdSpi mdSpi){
+        WriteUtil.mdSpi = mdSpi;
+        initBufWriter();
+    }
+
+    public static void initBufWriter(){
         try {
-            bufWriter = new BufferedWriter(new FileWriter("E:\\test\\init.txt", true));
+            BufferedWriter bufWriter = new BufferedWriter(new FileWriter("d:\\market\\market-20161220.txt", true));
+            mdSpi.onResetBufferWriter(bufWriter);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static BufferedWriter buildWrite(){
-        return bufWriter;
     }
 
     public static void startTimer(final MdApi mdApi){
@@ -35,7 +51,8 @@ public class WriteUtil {
             @Override
             public void run() {
                 try {
-                    bufWriter = new BufferedWriter(new FileWriter("e:\\test\\market-" + mdApi.getTradingDay() + ".txt", true));
+                    bufWriter = new BufferedWriter(new FileWriter("d:\\market\\market-" + mdApi.getTradingDay() + ".txt", true));
+                    mdSpi.onResetBufferWriter(bufWriter);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
