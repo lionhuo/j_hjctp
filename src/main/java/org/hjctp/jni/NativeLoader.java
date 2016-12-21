@@ -10,6 +10,9 @@ import java.util.List;
  * Created on 2016/12/6.
  */
 public class NativeLoader {
+    static{
+        System.loadLibrary("hjctp");
+    }
     public static native void createMdApi(String pszFlowPath, boolean bIsUsingUdp, boolean bIsMulticast);
     public static native void registerSpi(MdSpi mdSpi);
     public static native void registerFront(String mdSpi);

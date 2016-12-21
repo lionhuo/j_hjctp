@@ -3,8 +3,6 @@ package org.hjctp.api;
 import org.hjctp.jni.NativeLoader;
 import org.hjctp.spi.MdSpi;
 
-import java.util.List;
-
 /**
  * Copyright (c) 2012 Conversant Solutions. All rights reserved.
  * <p/>
